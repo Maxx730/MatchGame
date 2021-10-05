@@ -1,0 +1,35 @@
+[gd_scene format=2]
+
+[node name="main_menu" type="Node2D"]
+
+[node name="menu" type="CanvasLayer" parent="."]
+
+[node name="margin" type="MarginContainer" parent="menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vertical" type="VBoxContainer" parent="menu/margin"]
+margin_right = 270.0
+margin_bottom = 600.0
+
+[node name="Label" type="Label" parent="menu/margin/vertical"]
+margin_right = 270.0
+margin_bottom = 14.0
+text = "Menu Title"
+
+[node name="margin" type="MarginContainer" parent="menu/margin/vertical"]
+margin_top = 18.0
+margin_right = 270.0
+margin_bottom = 42.0
+
+[node name="vertical" type="VBoxContainer" parent="menu/margin/vertical/margin"]
+margin_right = 270.0
+margin_bottom = 24.0
+
+[node name="TextureButton" type="TextureButton" parent="menu/margin/vertical/margin/vertical"]
+margin_right = 270.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )

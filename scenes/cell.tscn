@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/cell.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/_green_gem.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/_cell_background.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/shine_particle.png" type="Texture" id=4]
+[ext_resource path="res://assets/shaders/pixel_trail.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/frame_coords = Vector2( 0, 0 )
+shader_param/nb_frames = Vector2( 0, 0 )
+shader_param/velocity = Vector2( 0, 0 )
+shader_param/velocity_max = 300.0
+shader_param/trail_size = 6.0
+shader_param/alpha_start = 0.8
+shader_param/alpha_tail = 0.2
+shader_param/alpha_factor = 1.2
+shader_param/noise_margin = 0.68
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 0, 0 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0308123, 0.627451, 0.980392, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
+
+[node name="cell" type="Area2D"]
+z_index = 2
+script = ExtResource( 1 )
+_shake_speed = 1.912
+_fade_speed = 3.0
+_tween_path = NodePath("tween")
+_modulate_path = NodePath("modulate")
+
+[node name="background" type="Sprite" parent="."]
+scale = Vector2( 2.6, 2.6 )
+texture = ExtResource( 3 )
+
+[node name="sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="tween" type="Tween" parent="."]
+
+[node name="debug_label" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shine" type="CPUParticles2D" parent="."]
+visible = false
+amount = 2
+explosiveness = 0.5
+randomness = 0.5
+lifetime_randomness = 0.5
+local_coords = false
+texture = ExtResource( 4 )
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 12 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 213.59
+angular_velocity_random = 0.95
+scale_amount = 2.0
+scale_amount_random = 0.5
+color_ramp = SubResource( 3 )
+
+[node name="modulate" type="CanvasModulate" parent="."]
+
+[connection signal="tween_completed" from="tween" to="." method="_tween_completed"]
