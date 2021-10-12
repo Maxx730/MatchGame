@@ -19,7 +19,7 @@ shader_param/alpha_factor = 1.2
 shader_param/noise_margin = 0.68
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 0, 0 )
+extents = Vector2( 16, 16 )
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.0308123, 0.627451, 0.980392, 1 )

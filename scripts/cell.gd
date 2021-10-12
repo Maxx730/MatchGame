@@ -4,7 +4,7 @@ var _sprites = [
 	preload("res://assets/sprites/items/Item_000.png"),
 	preload("res://assets/sprites/items/Item_003.png"),
 	preload("res://assets/sprites/items/Item_004.png"),
-	preload("res://assets/sprites/items/Item_007.png"),
+	preload("res://assets/sprites/items/Item_015.png"),
 	preload("res://assets/sprites/items/Item_009.png"),
 	preload("res://assets/sprites/items/Item_010.png"),
 ]
@@ -14,7 +14,7 @@ enum ITEMS {
 	WOOD_SWORD,
 	COPPER_SWORD,
 	STEEL_SWORD,
-	GOLD_SWORD,
+	RUBY_SWORD,
 	GREEN_SWORD,
 	PURPLE_SWORD
 }

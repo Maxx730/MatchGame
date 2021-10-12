@@ -3,10 +3,9 @@
 [ext_resource path="res://scripts/floating_score.gd" type="Script" id=1]
 
 [sub_resource type="DynamicFontData" id=1]
-font_path = "res://assets/fonts/Whacky_Joe.ttf"
+font_path = "res://assets/fonts/Awkward.ttf"
 
 [sub_resource type="DynamicFont" id=2]
-size = 4
 font_data = SubResource( 1 )
 
 [node name="floating_score" type="Node2D"]

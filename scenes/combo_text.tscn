@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/combo_text.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/Whacky_Joe.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[node name="combo_text" type="Node2D"]
+position = Vector2( 133.573, 245.819 )
+z_index = 2
+script = ExtResource( 1 )
+
+[node name="text" type="Label" parent="."]
+margin_left = -40.9698
+margin_top = -10.6634
+margin_right = 48.0302
+margin_bottom = 6.33661
+custom_fonts/font = SubResource( 2 )
+text = "Combo x1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="tween" to="." method="_animation_end"]

@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/dialog.gd" type="Script" id=1]
+[ext_resource path="res://styles/dialog-button-right-hover.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/fonts/Royal_Decree.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://styles/dialog-button-left-hover.tres" type="StyleBox" id=4]
+[ext_resource path="res://styles/dialog-button-right.tres" type="StyleBox" id=5]
+[ext_resource path="res://styles/dialog-button-left.tres" type="StyleBox" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0235294, 0.0235294, 0.0235294, 0.890196 )
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_top = 7.0
+bg_color = Color( 0.2, 0.2, 0.2, 0.329412 )
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="DynamicFont" id=3]
+extra_spacing_top = 3
+extra_spacing_bottom = -4
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="dialog" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 133, 268 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog_title" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 40.0
+size_flags_horizontal = 0
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 2 )
+text = "Title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vertical" type="VBoxContainer" parent="margin"]
+margin_right = 270.0
+margin_bottom = 600.0
+
+[node name="margin" type="MarginContainer" parent="margin/vertical"]
+margin_right = 270.0
+margin_bottom = 96.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 48
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 48
+
+[node name="message" type="HBoxContainer" parent="margin/vertical"]
+margin_top = 100.0
+margin_right = 270.0
+margin_bottom = 553.0
+size_flags_vertical = 7
+
+[node name="margin" type="MarginContainer" parent="margin/vertical/message"]
+margin_right = 270.0
+margin_bottom = 453.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 24
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 24
+
+[node name="actions" type="HBoxContainer" parent="margin/vertical"]
+margin_top = 557.0
+margin_right = 270.0
+margin_bottom = 600.0
+custom_constants/separation = 0
+
+[node name="action_negative" type="Button" parent="margin/vertical/actions"]
+margin_right = 135.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.988235, 0.6, 0.6, 0.47451 )
+text = "Label"
+
+[node name="action_positive" type="Button" parent="margin/vertical/actions"]
+margin_left = 135.0
+margin_right = 270.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.964706, 0.964706, 0.964706, 0.513726 )
+text = "Label"
+
+[node name="tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="margin/vertical/actions/action_negative" to="." method="_on_negative_choice"]
+[connection signal="pressed" from="margin/vertical/actions/action_positive" to="." method="_on_positive_choice"]

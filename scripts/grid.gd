@@ -14,7 +14,6 @@ export(int) var cols = 20
 export(bool) var _debug = false
 export(PackedScene) var cell_scene
 export(float, 1) var _neighbor_alpha
-export(NodePath) var _score_path
 export(NodePath) var _game_time
 
 var cells = Array()
@@ -28,6 +27,9 @@ var last_match = 0
 var chain_timeout = 0.5
 var matched_point_total = Vector2.ZERO
 
+var combo = 1
+
+# UI Elements
 var score_text = null
 var score = 0
 var time_text = null
@@ -35,15 +37,11 @@ var time_text = null
 func _ready():
 	cell_scale = viewport_size / Vector2(window_width, window_height)
 	_generate_grid()
-	
-	if _score_path != null:
-		score_text = get_node(_score_path)
 		
 	if _game_time != null:
 		time_text = get_node(_game_time)
 
 func _process(delta):
-	_set_game_timer($game_timer.time_left)
 	if score_text != null:
 		score_text.text = String(floor(score))
 		
@@ -77,14 +75,18 @@ func _set_clicked_cell(cell):
 		if first_cell != null:
 			if first_cell == cell:
 				_reset_selections()
+				globals._selector.visible = false
 			else:
 				if surrounding.find(cell) != -1:
 					second_cell = cell
 					_swap_points(first_cell, second_cell)
 					_check_for_matches()
+					globals._selector.visible = false
 		else:
 			first_cell = cell
 			_highlight_surrounding(first_cell)
+			globals._selector.visible = true
+			globals._selector._move_to(_cell_to_point(first_cell._position.x, first_cell._position.y))
 
 func _highlight_surrounding(cell):
 	if cell._position.y < cols - 1:
@@ -190,7 +192,15 @@ func _check_for_matches():
 	if matched:
 		_reset_selections()						
 		$destroy_timer.start()
+		var is_combo = (OS.get_ticks_msec() - last_match) / 1000.0
+
+		if is_combo < globals._combo_threshold:
+			combo += 1
+			_add_combo_text()
+		else:
+			combo = 1
 		last_match = OS.get_ticks_msec()
+		globals._combo_timer._start()
 		state = STATES.COLLAPSING
 	else:
 		if state == STATES.IDLE:
@@ -202,7 +212,7 @@ func _destroyed_matched_cells():
 		for c in cols:
 			if cells[r][c] != null:
 				if cells[r][c]._matched:
-					_add_floating_score(100, cells[r][c].position, cells[r][c]._score_color)
+					_add_floating_score(10 * combo * globals._level_progress._level, cells[r][c].position, cells[r][c]._score_color)
 					cells[r][c].queue_free()
 					cells[r][c] = null
 					_total_matched += 1
@@ -210,7 +220,8 @@ func _destroyed_matched_cells():
 	if _total_matched > 0:
 		globals._camera._shake(100, 0.05)
 		
-	_set_score(_total_matched * 100)
+	globals._score._add_score(_total_matched * 10 * combo * globals._level_progress._level)
+	globals._level_progress._add_progress(_total_matched)
 
 func _on_destroy_timer_finished():
 	_destroyed_matched_cells()
@@ -272,16 +283,12 @@ func _is_idle(msec):
 	var secs = msec / 1000.0
 	return secs > 1.0
 
-func _set_score(value):
-	$score_tween.interpolate_property(self, 'score', score, score + value, 1, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$score_tween.start()
-
 func _add_floating_score(val, point, color):
-	if score_instance != null:
-		var inst = score_instance.instance()
-		inst.position = Vector2(point.x - 24, point.y)
-		add_child(inst)
-		inst._move_to(Vector2(point.x - 24, point.y - 100))
+	var inst = globals._point_text_instance.instance()
+	inst.position = Vector2(point.x - 8, point.y)
+	add_child(inst)
+	inst._update_score_value(val)
+	inst._move_to(Vector2(point.x - 8, point.y - 100))
 
 func _set_matched_effect(matched_cells):
 	for cell in matched_cells:
@@ -297,5 +304,18 @@ func _set_game_timer(time_left):
 		time_text.text = String(minutes) + ':' + (String(seconds) if seconds > 9 else '0' + String(seconds))
 
 func _game_time_ended():
-	pass
+	var final_score = globals._score_instance.instance()
+	globals._user_interface._open_dialog()
+	globals._user_interface._add_dialog('Time Up', final_score, 'Retry', 'Cancel')
+	globals._user_interface.connect('_positive_pressed', self, '_add_transition')
 
+func _add_transition():
+	print('fsdgfds')
+	var trans = globals._transition_instance.instance()
+	globals._user_interface.add_child(trans)
+	trans._start()
+
+func _add_combo_text():
+	var comb = globals._combo_text_instance.instance()
+	add_child(comb)
+	comb._update_combo_count(combo)

@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxFlat" format=2]
+
+[resource]
+content_margin_top = 4.0
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+corner_radius_bottom_right = 9
+anti_aliasing = false
