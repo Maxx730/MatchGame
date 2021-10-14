@@ -1,35 +1,18 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/fonts/Royal_Decree.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Awkward.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/tiles/Tileset.png" type="Texture" id=3]
+[ext_resource path="res://assets/tiles/dungeon.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/sprites/SmallProps_Brazier32x32.png" type="Texture" id=4]
-[ext_resource path="res://scenes/light_orb.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/light_circle.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/SmallProps_GoldPile32x32.png" type="Texture" id=6]
-[ext_resource path="res://styles/menu_button_normal.tres" type="StyleBox" id=7]
-
-[sub_resource type="TileSet" id=5]
-0/name = "Tileset.png 0"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 128, 176 )
-0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 16, 16 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
+[ext_resource path="res://scenes/blur_button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/transition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/main_menu.gd" type="Script" id=9]
+[ext_resource path="res://scenes/light_orb.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/shaders/blur_shader.tres" type="Material" id=11]
+[ext_resource path="res://assets/sprites/_divider.png" type="Texture" id=12]
+[ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 4 )
@@ -77,6 +60,15 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=23]
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=24]
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=25]
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 2 )
 
@@ -119,11 +111,13 @@ animations = [ {
 } ]
 
 [node name="main_menu" type="Node2D"]
+script = ExtResource( 9 )
+_content_path = NodePath("menu/margin/vertical/content/vert")
 
 [node name="parabackground" type="TileMap" parent="."]
 position = Vector2( -10, 0 )
 scale = Vector2( 2, 2 )
-tile_set = SubResource( 5 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 393219, 1, 0, 393219, 2, 0, 393220, 3, 0, 393219, 4, 0, 393220, 5, 0, 393220, 6, 0, 393219, 7, 0, 393219, 8, 0, 393220, 65536, 0, 327684, 65537, 0, 393220, 65538, 0, 393219, 65539, 0, 327684, 65540, 0, 393219, 65541, 0, 393220, 65542, 0, 327684, 65543, 0, 393219, 65544, 0, 393219, 131072, 0, 393219, 131073, 0, 393219, 131074, 0, 393219, 131075, 0, 393219, 131076, 0, 393219, 131077, 0, 393220, 131078, 0, 393219, 131079, 0, 393220, 131080, 0, 327684, 196608, 0, 393219, 196609, 0, 393219, 196610, 0, 393219, 196611, 0, 393219, 196612, 0, 393219, 196613, 0, 393219, 196614, 0, 393219, 196615, 0, 327684, 196616, 0, 327684, 262144, 0, 393219, 262145, 0, 393219, 262146, 0, 393219, 262147, 0, 393219, 262148, 0, 327684, 262149, 0, 393219, 262150, 0, 393219, 262151, 0, 393219, 262152, 0, 393219, 327680, 0, 327684, 327681, 0, 393219, 327682, 0, 393220, 327683, 0, 393219, 327684, 0, 393219, 327685, 0, 393219, 327686, 0, 393219, 327687, 0, 393219, 327688, 0, 327684, 393216, 0, 327684, 393217, 0, 393219, 393218, 0, 393219, 393219, 0, 393219, 393220, 0, 393219, 393221, 0, 393219, 393222, 0, 327684, 393223, 0, 327684, 393224, 0, 393219, 458752, 0, 393219, 458753, 0, 393219, 458754, 0, 393220, 458755, 0, 393219, 458756, 0, 393220, 458757, 0, 393219, 458758, 0, 393220, 458759, 0, 393220, 458760, 0, 393219, 524288, 0, 393219, 524289, 0, 393220, 524290, 0, 393219, 524291, 0, 393220, 524292, 0, 393219, 524293, 0, 393219, 524294, 0, 393220, 524295, 0, 393219, 524296, 0, 393219, 589824, 0, 393219, 589825, 0, 393219, 589826, 0, 393219, 589827, 0, 393219, 589828, 0, 327684, 589829, 0, 393219, 589830, 0, 393219, 589831, 0, 327684, 589832, 0, 393219, 655360, 0, 393219, 655361, 0, 327684, 655362, 0, 393219, 655363, 0, 393219, 655364, 0, 327684, 655365, 0, 393219, 655366, 0, 393219, 655367, 0, 393219, 655368, 0, 393220, 720896, 0, 393219, 720897, 0, 393220, 720898, 0, 393219, 720899, 0, 393219, 720900, 0, 327684, 720901, 0, 393219, 720902, 0, 393220, 720903, 0, 327684, 720904, 0, 393219, 786432, 0, 393219, 786433, 0, 393219, 786434, 0, 327684, 786435, 0, 393219, 786436, 0, 393219, 786437, 0, 393219, 786438, 0, 393219, 786439, 0, 393219, 786440, 0, 393219, 851968, 0, 393219, 851969, 0, 327684, 851970, 0, 393219, 851971, 0, 393219, 851972, 0, 393219, 851973, 0, 393219, 851974, 0, 393220, 851975, 0, 327684, 851976, 0, 393219, 917504, 0, 327684, 917505, 0, 393219, 917506, 0, 393219, 917507, 0, 393219, 917508, 0, 393219, 917509, 0, 327684, 917510, 0, 393219, 917511, 0, 393220, 917512, 0, 393219, 1900553, 1, 0, 1900554, 1, 0 )
@@ -131,7 +125,7 @@ tile_data = PoolIntArray( 0, 0, 393219, 1, 0, 393219, 2, 0, 393220, 3, 0, 393219
 [node name="background" type="TileMap" parent="."]
 position = Vector2( -10, 0 )
 scale = Vector2( 2, 2 )
-tile_set = SubResource( 5 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65537, 5, 0, 65537, 6, 0, 65537, 7, 0, 65537, 8, 0, 65537, 65536, 0, 65537, 65537, 0, 4, 65538, 0, 131073, 65539, 0, 131073, 65540, 0, 131073, 65541, 0, 131073, 65542, 0, 5, 65543, 0, 65537, 65544, 0, 65537, 131072, 0, 65537, 131073, 0, 65538, 131078, 0, 131072, 131079, 0, 5, 131080, 0, 65537, 196608, 0, 131073, 196609, 0, 131074, 196615, 0, 65536, 196616, 0, 65537, 262151, 0, 131072, 262152, 0, 131073, 458752, 0, 1, 458753, 0, 1, 458754, 0, 2, 524288, 0, 131073, 524289, 0, 131073, 524290, 0, 131074, 589825, 0, 524293, 589831, 0, 0, 589832, 0, 1, 655361, 0, 589829, 655367, 0, 65536, 655368, 0, 65537, 720897, 0, 524293, 720903, 0, 131072, 720904, 0, 131073, 786433, 0, 524293, 786439, 0, 524293, 851969, 0, 589829, 851975, 0, 589829, 917504, 0, 524289, 917505, 0, 655365, 917506, 0, 524289, 917510, 0, 524288, 917511, 0, 655365, 917512, 0, 524289, 983040, 0, 1, 983041, 0, 2, 983042, 0, 3, 983043, 0, 1, 983044, 0, 1, 983045, 0, 2, 983046, 0, 1, 983047, 0, 1, 983048, 0, 3, 1048576, 0, 65537, 1048577, 0, 65537, 1048578, 0, 65537, 1048579, 0, 65537, 1048580, 0, 65537, 1048581, 0, 65537, 1048582, 0, 65537, 1048583, 0, 65537, 1048584, 0, 65537, 1114112, 0, 65537, 1114113, 0, 65537, 1114114, 0, 65537, 1114115, 0, 65537, 1114116, 0, 65537, 1114117, 0, 65537, 1114118, 0, 65537, 1114119, 0, 65537, 1114120, 0, 65537, 1179648, 0, 65537, 1179649, 0, 65537, 1179650, 0, 65537, 1179651, 0, 65537, 1179652, 0, 65537, 1179653, 0, 65537, 1179654, 0, 65537, 1179655, 0, 65537, 1179656, 0, 65537, 1900553, 1, 0, 1900554, 1, 0 )
@@ -139,21 +133,21 @@ tile_data = PoolIntArray( 0, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4,
 [node name="deco" type="TileMap" parent="."]
 position = Vector2( -10, 0 )
 scale = Vector2( 2, 2 )
-tile_set = SubResource( 5 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 8, 0, 65537, 131074, 0, 458759, 196616, 0, 65537, 262145, 0, 589830, 262151, 0, 327685, 327681, 0, 131079, 393217, 0, 655367, 458758, 0, 131078, 524290, 0, 327687, 524296, 0, 458757, 589824, 0, 458759, 589825, 0, 589830, 589831, 0, 262149, 720904, 0, 327686, 786435, 0, 131079, 786440, 0, 589831, 917510, 0, 655366, 917511, 0, 458756, 983042, 0, 262150, 1048584, 0, 65537, 1900553, 1, 0, 1900554, 1, 0 )
 
 [node name="brazier" type="AnimatedSprite" parent="deco"]
+visible = false
 position = Vector2( 124.535, 224.811 )
 frames = SubResource( 12 )
-frame = 2
 speed_scale = 2.0
 playing = true
 
-[node name="light_orb" parent="deco/brazier" instance=ExtResource( 5 )]
+[node name="light_orb" parent="deco/brazier" instance=ExtResource( 10 )]
 
-[node name="light_orb2" parent="deco/brazier" instance=ExtResource( 5 )]
+[node name="light_orb2" parent="deco/brazier" instance=ExtResource( 10 )]
 position = Vector2( 0, -11.5 )
 _start_scale = Vector2( 0.7, 0.7 )
 _end_scale = Vector2( 0.9, 0.9 )
@@ -161,7 +155,7 @@ _amount = 0.2
 
 [node name="menu" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="menu"]
+[node name="shade" type="ColorRect" parent="menu"]
 modulate = Color( 1, 1, 1, 0.490196 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -174,7 +168,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 12
-custom_constants/margin_top = 120
 custom_constants/margin_left = 12
 custom_constants/margin_bottom = 12
 __meta__ = {
@@ -183,13 +176,27 @@ __meta__ = {
 
 [node name="vertical" type="VBoxContainer" parent="menu/margin"]
 margin_left = 12.0
-margin_top = 120.0
 margin_right = 261.0
 margin_bottom = 588.0
 
-[node name="margin" type="MarginContainer" parent="menu/margin/vertical"]
+[node name="MarginContainer" type="MarginContainer" parent="menu/margin/vertical"]
 margin_right = 249.0
-margin_bottom = 80.0
+margin_bottom = 76.0
+custom_constants/margin_top = 12
+
+[node name="TextureRect" type="TextureRect" parent="menu/margin/vertical/MarginContainer"]
+material = ExtResource( 11 )
+margin_left = 185.0
+margin_top = 12.0
+margin_right = 249.0
+margin_bottom = 76.0
+size_flags_horizontal = 8
+texture = ExtResource( 5 )
+
+[node name="margin" type="MarginContainer" parent="menu/margin/vertical"]
+margin_top = 80.0
+margin_right = 249.0
+margin_bottom = 160.0
 custom_constants/margin_top = 48
 
 [node name="title_container" type="VBoxContainer" parent="menu/margin/vertical/margin"]
@@ -221,52 +228,92 @@ custom_fonts/font = SubResource( 2 )
 text = "of Johnny Cockring"
 valign = 2
 
-[node name="center" type="MarginContainer" parent="menu/margin/vertical"]
-margin_top = 84.0
+[node name="content" type="MarginContainer" parent="menu/margin/vertical"]
+margin_top = 164.0
 margin_right = 249.0
-margin_bottom = 451.0
+margin_bottom = 521.0
 size_flags_vertical = 3
 custom_constants/margin_right = 56
 custom_constants/margin_left = 56
 
-[node name="VBoxContainer" type="VBoxContainer" parent="menu/margin/vertical/center"]
+[node name="vert" type="VBoxContainer" parent="menu/margin/vertical/content"]
 margin_left = 56.0
-margin_top = 110.0
+margin_top = 131.0
 margin_right = 193.0
-margin_bottom = 256.0
+margin_bottom = 225.0
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="menu/margin/vertical/center/VBoxContainer"]
-margin_right = 137.0
-margin_bottom = 46.0
-custom_styles/normal = ExtResource( 7 )
-text = "Play"
+[node name="tween" type="Tween" parent="menu/margin/vertical/content/vert"]
 
-[node name="Button2" type="Button" parent="menu/margin/vertical/center/VBoxContainer"]
-margin_top = 50.0
-margin_right = 137.0
-margin_bottom = 96.0
-custom_styles/normal = ExtResource( 7 )
-text = "Play"
+[node name="play_button" parent="menu/margin/vertical/content/vert" instance=ExtResource( 7 )]
+margin_bottom = 45.0
+_label = "Play"
 
-[node name="Button3" type="Button" parent="menu/margin/vertical/center/VBoxContainer"]
-margin_top = 100.0
-margin_right = 137.0
-margin_bottom = 146.0
-custom_styles/normal = ExtResource( 7 )
-text = "Play"
+[node name="settings_button" parent="menu/margin/vertical/content/vert" instance=ExtResource( 7 )]
+margin_top = 49.0
+margin_bottom = 94.0
+_label = "Settings"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="menu/margin/vertical"]
-margin_top = 455.0
+[node name="bottom" type="VBoxContainer" parent="menu/margin/vertical"]
+margin_top = 525.0
 margin_right = 249.0
-margin_bottom = 468.0
+margin_bottom = 588.0
 
-[node name="version" type="Label" parent="menu/margin/vertical/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="menu/margin/vertical/bottom"]
 margin_right = 249.0
+margin_bottom = 37.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 12
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="menu/margin/vertical/bottom/MarginContainer"]
+margin_left = 16.0
+margin_top = 12.0
+margin_right = 233.0
+margin_bottom = 25.0
+
+[node name="level_main" type="Label" parent="menu/margin/vertical/bottom/MarginContainer/HBoxContainer"]
+margin_right = 26.0
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 23 )
+text = "Lvl 1"
+
+[node name="high_score_main" type="Label" parent="menu/margin/vertical/bottom/MarginContainer/HBoxContainer"]
+margin_left = 30.0
+margin_right = 198.0
+margin_bottom = 13.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 24 )
+text = "High Score"
+align = 2
+uppercase = true
+
+[node name="high_score_value_main" type="Label" parent="menu/margin/vertical/bottom/MarginContainer/HBoxContainer"]
+margin_left = 202.0
+margin_right = 217.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 25 )
+text = "000"
+
+[node name="TextureRect" type="TextureRect" parent="menu/margin/vertical/bottom"]
+margin_top = 41.0
+margin_right = 249.0
+margin_bottom = 46.0
+texture = ExtResource( 12 )
+
+[node name="version" type="Label" parent="menu/margin/vertical/bottom"]
+margin_top = 50.0
+margin_right = 249.0
+margin_bottom = 63.0
 custom_fonts/font = SubResource( 4 )
 text = "0.0.1"
 align = 1
+
+[node name="transition" parent="menu" instance=ExtResource( 8 )]
+margin_top = -0.561234
+margin_bottom = -0.561218
+color = Color( 0, 0, 0, 1 )
 
 [node name="physics_objects" type="Node2D" parent="."]
 
@@ -287,12 +334,12 @@ shape = SubResource( 15 )
 position = Vector2( 88.1185, 447.846 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 22 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( -0.415276, 191.452 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 22 )
-frame = 1
+frame = 2
 playing = true

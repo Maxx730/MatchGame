@@ -11,6 +11,8 @@ onready var score_instance = preload("res://scenes/floating_score.tscn")
 
 export(int) var rows = 20
 export(int) var cols = 20
+export(int) var _right_margin = 0
+export(int) var _left_margin = 0
 export(bool) var _debug = false
 export(PackedScene) var cell_scene
 export(float, 1) var _neighbor_alpha
@@ -157,8 +159,8 @@ func _get_adjacent_cells(cell):
 			_get_adjacent_cells(cells[_index + cols])
 
 func _cell_to_point(r, c):
-	var cell_width = (viewport_size.x / cell_scale.x) / cols
-	return Vector2((c * cell_width) + (cell_width / 2), r * cell_width)
+	var cell_width = (viewport_size.x - (_left_margin + _right_margin) / cell_scale.x) / cols
+	return Vector2((c * cell_width) + (cell_width / 2) + _left_margin, r * cell_width)
 
 func _cell_moved():
 	#_reset_selections()

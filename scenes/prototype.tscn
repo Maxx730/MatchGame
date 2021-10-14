@@ -1,10 +1,10 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/cell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/grid.gd" type="Script" id=2]
 [ext_resource path="res://scripts/user_interface.gd" type="Script" id=3]
 [ext_resource path="res://scripts/score.gd" type="Script" id=4]
-[ext_resource path="res://scenes/shake.gd" type="Script" id=5]
+[ext_resource path="res://scripts/shake.gd" type="Script" id=5]
 [ext_resource path="res://assets/sprites/circle_progress.png" type="Texture" id=6]
 [ext_resource path="res://scripts/combo_timer.gd" type="Script" id=7]
 [ext_resource path="res://styles/gameplay-bottom-button-normal.tres" type="StyleBox" id=8]
@@ -16,51 +16,113 @@
 [ext_resource path="res://assets/sprites/wrench.png" type="Texture" id=14]
 [ext_resource path="res://assets/sheets/_selection_sheet.png" type="Texture" id=15]
 [ext_resource path="res://scripts/cell_selection.gd" type="Script" id=16]
+[ext_resource path="res://assets/tiles/dungeon.tres" type="TileSet" id=17]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://assets/fonts/Awkward.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 1 )
-
-[sub_resource type="DynamicFontData" id=3]
-font_path = "res://assets/fonts/Awkward.ttf"
-
-[sub_resource type="DynamicFont" id=4]
-font_data = SubResource( 3 )
-
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 15 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 15 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 15 )
 region = Rect2( 48, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://assets/fonts/Awkward.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 6 )
+
+[sub_resource type="DynamicFontData" id=8]
+font_path = "res://assets/fonts/Awkward.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+font_data = SubResource( 8 )
+
 [node name="prototype" type="Node2D"]
 
 [node name="background" type="TileMap" parent="."]
-position = Vector2( -10.6787, -8.00903 )
+position = Vector2( -9.67871, -4.00903 )
 scale = Vector2( 2, 2 )
+tile_set = ExtResource( 17 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 0, 0, 131073, 1, 0, 131073, 2, 0, 131073, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 65536, 0, 458753, 65537, 0, 327684, 65538, 0, 393219, 65539, 0, 327684, 65540, 0, 327684, 65541, 0, 327684, 65542, 0, 327684, 65543, 0, 327684, 65544, 0, 458753, 131072, 1073741824, 655365, 131073, 0, 327684, 131074, 0, 393220, 131075, 0, 327684, 131076, 0, 327684, 131077, 0, 327684, 131078, 0, 327684, 131079, 0, 327684, 131080, 1073741824, 655365, 196608, 0, 524293, 196609, 0, 327684, 196610, 0, 327684, 196611, 0, 327684, 196612, 0, 327684, 196613, 0, 393220, 196614, 0, 327684, 196615, 0, 327684, 196616, 0, 524293, 262144, 0, 524293, 262145, 0, 327684, 262146, 0, 327684, 262147, 0, 393219, 262148, 0, 327684, 262149, 0, 327684, 262150, 0, 327684, 262151, 0, 393219, 262152, 0, 589829, 327680, 0, 524293, 327681, 0, 327684, 327682, 0, 393219, 327683, 0, 327684, 327684, 0, 327684, 327685, 0, 327684, 327686, 0, 327684, 327687, 0, 327684, 327688, 0, 524293, 393216, 0, 524293, 393217, 0, 327684, 393218, 0, 327684, 393219, 0, 327684, 393220, 0, 393220, 393221, 0, 327684, 393222, 0, 327684, 393223, 0, 327684, 393224, 0, 589829, 458752, 0, 524293, 458753, 0, 327684, 458754, 0, 327684, 458755, 0, 327684, 458756, 0, 327684, 458757, 0, 327684, 458758, 0, 393219, 458759, 0, 327684, 458760, 0, 524293, 524288, 0, 589829, 524289, 0, 327684, 524290, 0, 327684, 524291, 0, 327684, 524292, 0, 327684, 524293, 0, 327684, 524294, 0, 327684, 524295, 0, 393219, 524296, 0, 524293, 589824, 0, 524293, 589825, 0, 393219, 589826, 0, 327684, 589827, 0, 327684, 589828, 0, 327684, 589829, 0, 393219, 589830, 0, 327684, 589831, 0, 327684, 589832, 0, 589829, 655360, 0, 524293, 655361, 0, 327684, 655362, 0, 327684, 655363, 0, 327684, 655364, 0, 327684, 655365, 0, 327684, 655366, 0, 327684, 655367, 0, 327684, 655368, 0, 524293, 720896, 0, 589829, 720897, 0, 327684, 720898, 0, 327684, 720899, 0, 393220, 720900, 0, 327684, 720901, 0, 327684, 720902, 0, 327684, 720903, 0, 327684, 720904, 0, 524293, 786432, 0, 524293, 786433, 0, 327684, 786434, 0, 327684, 786435, 0, 327684, 786436, 0, 327684, 786437, 0, 327684, 786438, 0, 327684, 786439, 0, 327684, 786440, 0, 524293, 851968, 0, 524293, 851969, 0, 327684, 851970, 0, 327684, 851971, 0, 327684, 851972, 0, 327684, 851973, 0, 327684, 851974, 0, 327684, 851975, 0, 393220, 851976, 0, 589829, 917504, 0, 524293, 917505, 0, 393219, 917506, 0, 327684, 917507, 0, 327684, 917508, 0, 393219, 917509, 0, 327684, 917510, 0, 327684, 917511, 0, 327684, 917512, 0, 524293, 983040, 0, 589829, 983041, 0, 327684, 983042, 0, 327684, 983043, 0, 327684, 983044, 0, 327684, 983045, 0, 327684, 983046, 0, 327684, 983047, 0, 327684, 983048, 0, 524293, 1048576, 0, 655365, 1048577, 0, 327684, 1048578, 0, 393219, 1048579, 0, 393220, 1048580, 0, 327684, 1048581, 0, 327684, 1048582, 0, 327684, 1048583, 0, 327684, 1048584, 0, 655365, 1114112, 0, 458753, 1114113, 0, 327684, 1114114, 0, 327684, 1114115, 0, 327684, 1114116, 0, 327684, 1114117, 0, 327684, 1114118, 0, 327684, 1114119, 0, 393219, 1114120, 0, 458753, 1179648, 1073741824, 131073, 1179649, 1073741824, 131073, 1179650, 1073741824, 131073, 1179651, 1073741824, 131073, 1179652, 1073741824, 131073, 1179653, 1073741824, 131073, 1179654, 1073741824, 131073, 1179655, 1073741824, 131073, 1179656, 1073741824, 131073 )
+
+[node name="detail" type="TileMap" parent="."]
+position = Vector2( -9.67871, -4.00903 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 17 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 1, 0, 327686, 2, 0, 131073, 3, 0, 131073, 4, 536870912, 327686, 5, 0, 131073, 6, 0, 131073, 7, 536870912, 327686, 8, 0, 131073, 65536, 536870912, 393217, 65537, 536870912, 393221, 65539, 0, 327684, 65540, 536870912, 393222, 65541, 0, 327684, 65542, 0, 327684, 65543, 0, 327684, 65544, 536870912, 393216, 131072, 1073741824, 655365, 131073, 0, 327684, 131074, 0, 393220, 131075, 0, 327684, 131076, 0, 327684, 131077, 0, 327684, 131078, 0, 327684, 131079, 0, 327684, 131080, 1073741824, 655365, 196608, 0, 524293, 196609, 0, 327684, 196610, 0, 327684, 196611, 0, 327684, 196612, 0, 327684, 196613, 0, 393220, 196614, 0, 327684, 196615, 0, 327684, 196616, 0, 524293, 262144, 0, 524293, 262145, 0, 327684, 262146, 0, 327684, 262147, 0, 393219, 262148, 0, 327684, 262149, 0, 327684, 262150, 0, 327684, 262151, 0, 393219, 262152, 0, 589829, 327680, 0, 524293, 327681, 0, 327684, 327682, 0, 393219, 327683, 0, 327684, 327684, 0, 327684, 327685, 0, 327684, 327686, 0, 327684, 327687, 0, 327684, 327688, 0, 524293, 393216, 0, 524293, 393217, 0, 327684, 393218, 0, 327684, 393219, 0, 327684, 393220, 0, 393220, 393221, 0, 327684, 393222, 0, 327684, 393223, 0, 327684, 393224, 0, 589829, 458752, 0, 524293, 458753, 0, 327684, 458754, 0, 327684, 458755, 0, 327684, 458756, 0, 327684, 458757, 0, 327684, 458758, 0, 393219, 458759, 0, 327684, 458760, 0, 524293, 524288, 0, 589829, 524289, 0, 327684, 524290, 0, 327684, 524291, 0, 327684, 524292, 0, 327684, 524293, 0, 327684, 524294, 0, 327684, 524295, 0, 393219, 524296, 0, 524293, 589824, 0, 524293, 589825, 0, 393219, 589826, 0, 327684, 589827, 0, 327684, 589828, 0, 327684, 589829, 0, 393219, 589830, 0, 327684, 589831, 0, 327684, 589832, 0, 589829, 655360, 0, 524293, 655361, 0, 327684, 655362, 0, 327684, 655363, 0, 327684, 655364, 0, 327684, 655365, 0, 327684, 655366, 0, 327684, 655367, 0, 327684, 655368, 0, 524293, 720896, 0, 589829, 720897, 0, 327684, 720898, 0, 327684, 720899, 0, 393220, 720900, 0, 327684, 720901, 0, 327684, 720902, 0, 327684, 720903, 0, 327684, 720904, 0, 524293, 786432, 0, 524293, 786433, 0, 327684, 786434, 0, 327684, 786435, 0, 327684, 786436, 0, 327684, 786437, 0, 327684, 786438, 0, 327684, 786439, 0, 327684, 786440, 0, 524293, 851968, 0, 524293, 851969, 0, 327684, 851970, 0, 327684, 851971, 0, 327684, 851972, 0, 327684, 851973, 0, 327684, 851974, 0, 327684, 851975, 0, 393220, 851976, 0, 589829, 917504, 0, 524293, 917505, 0, 393219, 917506, 0, 327684, 917507, 0, 327684, 917508, 0, 393219, 917509, 0, 327684, 917510, 0, 327684, 917511, 0, 327684, 917512, 0, 524293, 983040, 0, 589829, 983041, 0, 327684, 983042, 0, 327684, 983043, 0, 327684, 983044, 0, 327684, 983045, 0, 327684, 983046, 0, 327684, 983047, 0, 327684, 983048, 0, 524293, 1048576, 0, 655365, 1048577, 0, 327684, 1048578, 0, 393219, 1048579, 0, 393220, 1048580, 0, 327684, 1048581, 0, 327684, 1048582, 0, 327684, 1048583, 0, 327684, 1048584, 0, 655365, 1114112, 536870912, 3, 1114113, 0, 327684, 1114114, 0, 327684, 1114115, 0, 327684, 1114116, 0, 327684, 1114117, 0, 327684, 1114118, 0, 327684, 1114119, 0, 393219, 1114120, 536870912, 3, 1179648, 536870912, 262150, 1179649, 1073741824, 131073, 1179650, 1073741824, 131073, 1179651, 1073741824, 131073, 1179652, 1073741824, 131073, 1179653, 1073741824, 131073, 1179654, 1073741824, 131073, 1179655, 1073741824, 131073, 1179656, 536870912, 262149 )
+
+[node name="camera" type="Camera2D" parent="."]
+offset = Vector2( 135, 300 )
+current = true
+script = ExtResource( 5 )
+
+[node name="_shake_timer" type="Timer" parent="camera"]
+
+[node name="_shake_tween" type="Tween" parent="camera"]
+
+[node name="grid" type="Node2D" parent="."]
+position = Vector2( 0, 112 )
+script = ExtResource( 2 )
+rows = 10
+cols = 5
+_right_margin = 24
+_left_margin = 24
+cell_scene = ExtResource( 1 )
+_neighbor_alpha = 1.0
+_game_time = NodePath("../user_interface/top/horizontal/margin_left/time")
+
+[node name="destroy_timer" type="Timer" parent="grid"]
+wait_time = 0.2
+one_shot = true
+
+[node name="collapse_timer" type="Timer" parent="grid"]
+wait_time = 0.2
+one_shot = true
+
+[node name="fill_timer" type="Timer" parent="grid"]
+wait_time = 0.3
+one_shot = true
+
+[node name="swap_timer" type="Timer" parent="grid"]
+wait_time = 0.3
+one_shot = true
+
+[node name="score_tween" type="Tween" parent="grid"]
+
+[node name="cell_selection" type="AnimatedSprite" parent="grid"]
+scale = Vector2( 2.9, 2.9 )
+z_index = 3
+frames = SubResource( 5 )
+playing = true
+script = ExtResource( 16 )
+
+[node name="tween" type="Tween" parent="grid/cell_selection"]
+
+[node name="shade" type="CanvasModulate" parent="."]
+z_as_relative = false
+color = Color( 1, 1, 1, 0.286275 )
 
 [node name="user_interface" type="CanvasLayer" parent="."]
 script = ExtResource( 3 )
@@ -100,7 +162,7 @@ margin_top = 12.0
 margin_right = 71.0
 margin_bottom = 25.0
 size_flags_horizontal = 11
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "0:00"
 script = ExtResource( 12 )
 
@@ -149,7 +211,7 @@ margin_top = 12.0
 margin_right = 72.0
 margin_bottom = 25.0
 size_flags_horizontal = 8
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "0"
 script = ExtResource( 4 )
 
@@ -171,7 +233,7 @@ margin_bottom = 22.0
 [node name="level_text" type="Label" parent="user_interface/top/level_progress/vertical"]
 margin_right = 258.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 9 )
 text = "1"
 align = 1
 
@@ -231,56 +293,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="camera" type="Camera2D" parent="."]
-offset = Vector2( 135, 300 )
-current = true
-script = ExtResource( 5 )
-
-[node name="_shake_timer" type="Timer" parent="camera"]
-
-[node name="_shake_tween" type="Tween" parent="camera"]
-
-[node name="grid" type="Node2D" parent="."]
-position = Vector2( 0, 112 )
-script = ExtResource( 2 )
-rows = 10
-cols = 6
-cell_scene = ExtResource( 1 )
-_neighbor_alpha = 1.0
-_game_time = NodePath("../user_interface/top/horizontal/margin_left/time")
-
-[node name="destroy_timer" type="Timer" parent="grid"]
-wait_time = 0.2
-one_shot = true
-
-[node name="collapse_timer" type="Timer" parent="grid"]
-wait_time = 0.2
-one_shot = true
-
-[node name="fill_timer" type="Timer" parent="grid"]
-wait_time = 0.3
-one_shot = true
-
-[node name="swap_timer" type="Timer" parent="grid"]
-wait_time = 0.3
-one_shot = true
-
-[node name="score_tween" type="Tween" parent="grid"]
-
-[node name="cell_selection" type="AnimatedSprite" parent="grid"]
-scale = Vector2( 2.9, 2.9 )
-z_index = 3
-frames = SubResource( 9 )
-frame = 3
-playing = true
-script = ExtResource( 16 )
-
-[node name="tween" type="Tween" parent="grid/cell_selection"]
-
-[connection signal="timeout" from="user_interface/top/horizontal/margin_left/time/timer" to="user_interface/top/horizontal/margin_left/time" method="_game_time_ended"]
-[connection signal="timeout" from="user_interface/top/horizontal/margin_center/combo_timer_progress/timer" to="user_interface/top/horizontal/margin_center/combo_timer_progress" method="_timer_finished"]
 [connection signal="timeout" from="camera/_shake_timer" to="camera" method="_timer_end"]
 [connection signal="timeout" from="grid/destroy_timer" to="grid" method="_on_destroy_timer_finished"]
 [connection signal="timeout" from="grid/collapse_timer" to="grid" method="_move_peices_down"]
 [connection signal="timeout" from="grid/fill_timer" to="grid" method="_fill_cells"]
 [connection signal="timeout" from="grid/swap_timer" to="grid" method="_swap_back"]
+[connection signal="timeout" from="user_interface/top/horizontal/margin_left/time/timer" to="user_interface/top/horizontal/margin_left/time" method="_game_time_ended"]
+[connection signal="timeout" from="user_interface/top/horizontal/margin_center/combo_timer_progress/timer" to="user_interface/top/horizontal/margin_center/combo_timer_progress" method="_timer_finished"]
