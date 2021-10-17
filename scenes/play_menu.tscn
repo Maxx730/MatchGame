@@ -9,13 +9,13 @@
 [ext_resource path="res://scenes/blur_button.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 8 )
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 // Ranges from 0 to 1 over the course of the transition.
@@ -35,8 +35,8 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/progress = 0.0
 shader_param/diamondPixelSize = 45.0
 
@@ -107,7 +107,7 @@ custom_constants/separation = 10
 [node name="Label" type="Label" parent="menu/margin/VBoxContainer/content/choice_top/VBoxContainer"]
 margin_right = 201.0
 margin_bottom = 8.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Time Attack"
 align = 1
 
@@ -115,7 +115,7 @@ align = 1
 margin_top = 18.0
 margin_right = 201.0
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Race against the clock, make matches, collect points and keep the clock running.  How many points can you collect before time runs out?"
 autowrap = true
 
@@ -152,7 +152,7 @@ custom_constants/separation = 10
 [node name="Label" type="Label" parent="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer"]
 margin_right = 201.0
 margin_bottom = 8.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Level Progress"
 align = 1
 
@@ -160,7 +160,7 @@ align = 1
 margin_top = 18.0
 margin_right = 201.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Play through levels that progressively get harder, gain experience and unlock treasures!"
 autowrap = true
 
@@ -177,7 +177,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="transition" parent="menu" instance=ExtResource( 2 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="parabackground" type="TileMap" parent="."]

@@ -38,6 +38,7 @@ var time_text = null
 
 func _ready():
 	cell_scale = viewport_size / Vector2(window_width, window_height)
+	print(cell_scale)
 	_generate_grid()
 		
 	if _game_time != null:
@@ -159,7 +160,8 @@ func _get_adjacent_cells(cell):
 			_get_adjacent_cells(cells[_index + cols])
 
 func _cell_to_point(r, c):
-	var cell_width = (viewport_size.x - (_left_margin + _right_margin) / cell_scale.x) / cols
+	var cell_width = (270 - (_left_margin + _right_margin) / cell_scale.x) / cols
+	print(cell_width)
 	return Vector2((c * cell_width) + (cell_width / 2) + _left_margin, r * cell_width)
 
 func _cell_moved():

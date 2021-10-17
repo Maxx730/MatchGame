@@ -13,6 +13,7 @@ func _ready():
 		_main_content.modulate = Color(1, 1, 1, 0)
 		
 	$menu/margin/vertical/content/vert/play_button.connect("_button_pressed", self, "_open_play_menu")
+	$menu/margin/vertical/content/vert/high_scores_button.connect("_button_pressed", self, "_open_high_scores")
 
 func intro_finished():
 	if _main_content != null:
@@ -29,3 +30,6 @@ func _open_play_menu():
 	
 func _open_settings_menu():
 	pass
+
+func _open_high_scores():
+	get_tree().change_scene(resources._scenes[3])
