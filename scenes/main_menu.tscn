@@ -14,97 +14,97 @@
 [ext_resource path="res://assets/sprites/_divider.png" type="Texture" id=12]
 [ext_resource path="res://assets/fonts/m5x7.ttf" type="DynamicFontData" id=13]
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 4 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 4 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 4 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFontData" id=13]
+[sub_resource type="DynamicFontData" id=8]
 font_path = "res://assets/fonts/Royal_Decree.ttf"
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=9]
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = 9
-font_data = SubResource( 13 )
+font_data = SubResource( 8 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=10]
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=11]
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=14]
 font_data = ExtResource( 2 )
-
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 48.2819, 30.4712 )
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 30.5822, 47.2616 )
+extents = Vector2( 48.2819, 30.4712 )
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 32, 32 )
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 30.5822, 47.2616 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 6 )
-region = Rect2( 32, 0, 32, 32 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 6 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 6 )
-region = Rect2( 96, 0, 32, 32 )
+region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 6 )
-region = Rect2( 128, 0, 32, 32 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 6 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=23]
 animations = [ {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -141,7 +141,7 @@ tile_data = PoolIntArray( 8, 0, 65537, 131074, 0, 458759, 196616, 0, 65537, 2621
 [node name="brazier" type="AnimatedSprite" parent="deco"]
 visible = false
 position = Vector2( 124.535, 224.811 )
-frames = SubResource( 12 )
+frames = SubResource( 7 )
 speed_scale = 2.0
 playing = true
 
@@ -208,7 +208,7 @@ custom_constants/separation = -5
 [node name="title" type="Label" parent="menu/margin/vertical/margin/title_container"]
 margin_right = 249.0
 margin_bottom = 17.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 9 )
 text = "The Adventures"
 valign = 2
 
@@ -224,7 +224,7 @@ margin_left = 16.0
 margin_top = 12.0
 margin_right = 249.0
 margin_bottom = 20.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 10 )
 text = "of Johnny Cockring"
 valign = 2
 
@@ -276,7 +276,7 @@ margin_bottom = 25.0
 [node name="level_main" type="Label" parent="menu/margin/vertical/bottom/MarginContainer/HBoxContainer"]
 margin_right = 26.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 11 )
 text = "Lvl 1"
 
 [node name="high_score_main" type="Label" parent="menu/margin/vertical/bottom/MarginContainer/HBoxContainer"]
@@ -284,7 +284,7 @@ margin_left = 30.0
 margin_right = 198.0
 margin_bottom = 13.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 12 )
 text = "High Score"
 align = 2
 uppercase = true
@@ -293,7 +293,7 @@ uppercase = true
 margin_left = 202.0
 margin_right = 217.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 25 )
+custom_fonts/font = SubResource( 13 )
 text = "000"
 
 [node name="TextureRect" type="TextureRect" parent="menu/margin/vertical/bottom"]
@@ -306,7 +306,7 @@ texture = ExtResource( 12 )
 margin_top = 50.0
 margin_right = 249.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 14 )
 text = "0.0.1"
 align = 1
 
@@ -321,25 +321,24 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 36, 256.211 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="physics_objects/StaticBody2D"]
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="physics_objects"]
 position = Vector2( 250.309, 336.599 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="physics_objects/StaticBody2D2"]
 position = Vector2( -6, -1 )
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 88.1185, 447.846 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 22 )
-frame = 3
+frames = SubResource( 23 )
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( -0.415276, 191.452 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 22 )
-frame = 2
+frames = SubResource( 23 )
 playing = true

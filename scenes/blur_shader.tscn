@@ -13,3 +13,5 @@ __meta__ = {
 }
 
 [node name="tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="tween" to="." method="_on_fade_complete"]

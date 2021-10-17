@@ -1,6 +1,6 @@
 extends Node
 
-var _scenes = ["res://scenes/main_menu.tscn", "res://scenes/play_menu.tscn"]
+var _scenes = ["res://scenes/main_menu.tscn", "res://scenes/play_menu.tscn", "res://scenes/prototype.tscn"]
 var _sprites = []
 
 func _ready():

@@ -1,5 +1,7 @@
 extends ColorRect
 
+signal _fade_finished()
+
 export(float) var _blur_amount = 2
 
 func _ready():
@@ -13,5 +15,6 @@ func _fade_out():
 	$tween.interpolate_property(material, "shader_param/blur_amount", _blur_amount, 0, 0.25, Tween.TRANS_QUAD, Tween.EASE_IN)
 	$tween.start()
 	
-func _on_fade_finish():
-	pass
+func _on_fade_complete(obj, key):
+	if key == ':shader_param/blur_amount':
+		emit_signal("_fade_finished")

@@ -2,6 +2,10 @@ extends AnimatedSprite
 
 func _ready():
 	globals._selector = self
+	
+func _process(delta):
+	rotation += delta
+	
 
 func _move_to(point):
 	print(point)

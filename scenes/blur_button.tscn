@@ -49,6 +49,8 @@ size_flags_vertical = 3
 [node name="margin" type="MarginContainer" parent="."]
 margin_right = 137.0
 margin_bottom = 46.0
+custom_constants/margin_right = 0
+custom_constants/margin_left = 0
 
 [node name="button" type="Button" parent="margin"]
 margin_right = 137.0

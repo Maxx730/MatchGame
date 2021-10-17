@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tiles/dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/transition.tscn" type="PackedScene" id=2]
@@ -13,6 +13,9 @@
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 8 )
 
 [sub_resource type="Shader" id=1]
@@ -78,14 +81,14 @@ __meta__ = {
 
 [node name="top" type="MarginContainer" parent="menu/margin/VBoxContainer"]
 margin_right = 246.0
-margin_bottom = 122.0
+margin_bottom = 111.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="content" type="VBoxContainer" parent="menu/margin/VBoxContainer"]
-margin_top = 126.0
+margin_top = 115.0
 margin_right = 243.0
-margin_bottom = 449.0
+margin_bottom = 461.0
 size_flags_horizontal = 2
 size_flags_vertical = 3
 
@@ -123,6 +126,7 @@ autowrap = true
 margin_top = 89.0
 margin_right = 201.0
 margin_bottom = 134.0
+_label = "Let's Go!"
 
 [node name="divider" type="TextureRect" parent="menu/margin/VBoxContainer/content"]
 margin_top = 162.0
@@ -134,7 +138,7 @@ texture = ExtResource( 5 )
 [node name="choice_bottom" type="MarginContainer" parent="menu/margin/VBoxContainer/content"]
 margin_top = 171.0
 margin_right = 243.0
-margin_bottom = 323.0
+margin_bottom = 346.0
 size_flags_vertical = 3
 custom_constants/margin_right = 26
 custom_constants/margin_top = 26
@@ -145,36 +149,53 @@ custom_constants/margin_bottom = 8
 margin_left = 16.0
 margin_top = 26.0
 margin_right = 217.0
-margin_bottom = 144.0
+margin_bottom = 167.0
 size_flags_vertical = 3
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer"]
+[node name="challenge" type="Label" parent="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer"]
 margin_right = 201.0
 margin_bottom = 8.0
 custom_fonts/font = SubResource( 3 )
-text = "Level Progress"
+text = "Challenge"
 align = 1
 
-[node name="Label2" type="Label" parent="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer"]
+[node name="current_lvl" type="Label" parent="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer"]
 margin_top = 18.0
 margin_right = 201.0
-margin_bottom = 63.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 5 )
+text = "Current: Lvl 1"
+align = 1
+
+[node name="description" type="Label" parent="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer"]
+margin_top = 41.0
+margin_right = 201.0
+margin_bottom = 86.0
 custom_fonts/font = SubResource( 4 )
 text = "Play through levels that progressively get harder, gain experience and unlock treasures!"
 autowrap = true
 
 [node name="blur_button" parent="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 73.0
+margin_top = 96.0
 margin_right = 201.0
-margin_bottom = 118.0
+margin_bottom = 141.0
+_label = "Start"
 
 [node name="bottom" type="MarginContainer" parent="menu/margin/VBoxContainer"]
-margin_top = 453.0
+margin_top = 465.0
 margin_right = 246.0
 margin_bottom = 576.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="back_button" parent="menu/margin/VBoxContainer/bottom" instance=ExtResource( 7 )]
+margin_top = 66.0
+margin_right = 31.0
+margin_bottom = 111.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+_label = "< Back"
 
 [node name="transition" parent="menu" instance=ExtResource( 2 )]
 material = SubResource( 2 )
@@ -187,3 +208,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 393219, 1, 0, 393219, 2, 536870912, 327684, 3, 536870912, 327684, 4, 536870912, 327684, 5, 536870912, 327684, 6, 536870912, 327684, 7, 0, 393219, 8, 0, 393220, 65536, 0, 327684, 65537, 0, 393220, 65538, 536870912, 327684, 65539, 536870912, 327684, 65540, 536870912, 327684, 65541, 0, 393220, 65542, 536870912, 327684, 65543, 536870912, 327684, 65544, 0, 393219, 131072, 0, 393219, 131073, 536870912, 327684, 131074, 536870912, 327684, 131075, 0, 393219, 131076, 536870912, 327684, 131077, 536870912, 327684, 131078, 0, 393219, 131079, 536870912, 327684, 131080, 0, 327684, 196608, 0, 393219, 196609, 536870912, 327684, 196610, 536870912, 327684, 196611, 536870912, 327684, 196612, 536870912, 327684, 196613, 536870912, 327684, 196614, 536870912, 327684, 196615, 536870912, 327684, 196616, 0, 327684, 262144, 0, 393219, 262145, 536870912, 327684, 262146, 536870912, 327684, 262147, 536870912, 327684, 262148, 0, 327684, 262149, 0, 393219, 262150, 536870912, 327684, 262151, 0, 393219, 262152, 0, 393219, 327680, 0, 327684, 327681, 0, 393219, 327682, 536870912, 327684, 327683, 0, 393219, 327684, 0, 393219, 327685, 0, 393219, 327686, 0, 393219, 327687, 536870912, 327684, 327688, 0, 327684, 393216, 0, 327684, 393217, 0, 393219, 393218, 536870912, 327684, 393219, 536870912, 327684, 393220, 536870912, 327684, 393221, 536870912, 327684, 393222, 0, 327684, 393223, 536870912, 327684, 393224, 536870912, 327684, 458752, 0, 393219, 458753, 0, 393219, 458754, 536870912, 327684, 458755, 536870912, 327684, 458756, 536870912, 327684, 458757, 0, 393219, 458758, 0, 393220, 458759, 536870912, 327684, 458760, 536870912, 327684, 524288, 0, 393219, 524289, 0, 393220, 524290, 536870912, 327684, 524291, 536870912, 327684, 524292, 0, 393219, 524293, 0, 393219, 524294, 0, 393220, 524295, 536870912, 327684, 524296, 0, 393219, 589824, 0, 393219, 589825, 0, 393219, 589826, 0, 393219, 589827, 536870912, 327684, 589828, 0, 327684, 589829, 0, 393219, 589830, 536870912, 327684, 589831, 536870912, 327684, 589832, 0, 393219, 655360, 0, 393219, 655361, 536870912, 327684, 655362, 536870912, 327684, 655363, 536870912, 327684, 655364, 0, 327684, 655365, 0, 393219, 655366, 536870912, 327684, 655367, 536870912, 327684, 655368, 0, 393220, 720896, 0, 393219, 720897, 536870912, 327684, 720898, 536870912, 327684, 720899, 536870912, 327684, 720900, 0, 327684, 720901, 0, 393219, 720902, 0, 393220, 720903, 536870912, 327684, 720904, 0, 393219, 786432, 0, 393219, 786433, 536870912, 327684, 786434, 536870912, 327684, 786435, 536870912, 327684, 786436, 0, 393219, 786437, 536870912, 327684, 786438, 536870912, 327684, 786439, 536870912, 327684, 786440, 0, 393219, 851968, 0, 393219, 851969, 0, 327684, 851970, 536870912, 327684, 851971, 536870912, 327684, 851972, 536870912, 327684, 851973, 536870912, 327684, 851974, 0, 393220, 851975, 0, 327684, 851976, 0, 393219, 917504, 0, 327684, 917505, 0, 393219, 917506, 536870912, 327684, 917507, 536870912, 327684, 917508, 536870912, 327684, 917509, 0, 327684, 917510, 0, 393219, 917511, 0, 393220, 917512, 0, 393219, 983040, 536870912, 327684, 983041, 536870912, 327684, 983042, 536870912, 327684, 983043, 536870912, 393219, 983044, 536870912, 327684, 983045, 536870912, 327684, 983046, 536870912, 327684, 983047, 536870912, 327684, 983048, 536870912, 327684, 1048576, 536870912, 327684, 1048577, 536870912, 327684, 1048578, 536870912, 327684, 1048579, 536870912, 327684, 1048580, 536870912, 327684, 1048581, 536870912, 327684, 1048582, 536870912, 393219, 1048583, 536870912, 327684, 1048584, 536870912, 327684, 1114112, 536870912, 327684, 1114113, 536870912, 327684, 1114114, 536870912, 327684, 1114115, 536870912, 393219, 1114116, 536870912, 327684, 1114117, 536870912, 327684, 1114118, 536870912, 327684, 1114119, 536870912, 327684, 1114120, 536870912, 327684, 1179648, 536870912, 327684, 1179649, 536870912, 327684, 1179650, 536870912, 327684, 1179651, 536870912, 327684, 1179652, 536870912, 327684, 1179653, 536870912, 327684, 1179654, 536870912, 327684, 1179655, 536870912, 327684, 1179656, 536870912, 327684, 1900553, 1, 0, 1900554, 1, 0 )
+
+[connection signal="_button_pressed" from="menu/margin/VBoxContainer/content/choice_top/VBoxContainer/blur_button" to="." method="_on_time_attack_start"]
+[connection signal="_button_pressed" from="menu/margin/VBoxContainer/content/choice_bottom/VBoxContainer/blur_button" to="." method="_on_challenge_start"]
+[connection signal="_button_pressed" from="menu/margin/VBoxContainer/bottom/back_button" to="." method="_on_back"]

@@ -13,6 +13,8 @@ func _ready():
 		_main_content.modulate = Color(1, 1, 1, 0)
 		
 	$menu/margin/vertical/content/vert/play_button.connect("_button_pressed", self, "_open_play_menu")
+	
+	_set_save_data(globals._save_data)
 
 func intro_finished():
 	if _main_content != null:
@@ -29,3 +31,6 @@ func _open_play_menu():
 	
 func _open_settings_menu():
 	pass
+
+func _set_save_data(data):
+	$menu/margin/vertical/bottom/MarginContainer/HBoxContainer/level_main.text = "Lvl " + String(data._level)
